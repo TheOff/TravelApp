@@ -1,0 +1,13 @@
+[{
+  "title": "8A",
+  "students": [{
+    "name": "Vasya Pupkin",
+    "gpa": 4.8
+  }, {
+    "name": "Petia Vasechkin",
+    "gpa": 3.2
+  }, {
+    "name": "Test Student",
+    "gpa": 3.1
+  }]
+}]

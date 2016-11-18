@@ -1,0 +1,101 @@
+<h1>GPA Calculator</h1>
+
+<div class="average-gpa">
+    Average GPA: <b>{{ avgGpa | number:2 }}</b>
+</div>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li ng-repeat="grade in grades"
+        role="presentation"
+        ng-class="{'active': $index === currentGrade}">
+        <a ng-href="#grade-{{ $index }}"
+           ng-click="setTab($index, $event)">
+
+            <span>Grade {{ grade.title }}</span>
+            <span class="remove-btn"
+                  ng-click="removeGrade($index, $event)">×</span>
+
+        </a>
+    </li>
+
+    <li>
+        <button class="btn btn-default btn-sm" ng-click="addGrade()">+</button>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade"
+         role="tabpanel"
+         ng-repeat="grade in grades"
+         data-attr-id="grade-{{ $index }}"
+         ng-class="{'active in': $index === currentGrade}">
+
+        <div class="form-group grade-name">
+            <label ng-attr-for="grade-{{ $index }}-title">Grade</label>
+
+            <input type="text"
+                   class="form-control"
+                   ng-attr-name="grade-{{ $index }}-title"
+                   ng-attr-id="grade-{{ $index }}-title"
+                   ng-model="grade.title" />
+        </div>
+
+        <div class="students">
+            <div class="row header">
+                <span class="col-xs-6">Name</span>
+                <span class="col-xs-4">GPA</span>
+            </div>
+
+            <div class="row" ng-repeat="student in grade.students">
+                <span class="col-xs-6">{{ student.name }}</span>
+                <span class="col-xs-4">{{ student.gpa }}</span>
+                <span class="col-xs-2">
+                    <a role="button"
+                       class="remove-btn"
+                       ng-click="removeStudent($parent.$index, $index)">×</a>
+                </span>
+            </div>
+
+            <form name="form"
+                  class="row footer"
+                  novalidate>
+
+                <div class="col-sm-6"
+                     ng-class="{
+                        'has-error': form.name.$invalid && (form.$submitted || form.name.$touched),
+                        'has-success': form.name.$valid && form.$submitted
+                     }">
+                    <input type="text"
+                           class="form-control"
+                           name="name"
+                           ng-model="student.name"
+                           required=""
+                           placeholder="Enter Student's name"
+                    >
+                </div>
+
+                <div class="col-sm-4"
+                     ng-class="{
+                        'has-error': form.gpa.$invalid && (form.$submitted || form.gpa.$touched),
+                        'has-success': form.gpa.$valid && form.$submitted
+                     }">
+                    <input type="number"
+                           class="form-control"
+                           name="gpa"
+                           ng-model="student.gpa"
+                           min="0"
+                           max="5"
+                           required=""
+                           placeholder="Enter Student's GPA">
+                </div>
+
+                <div class="col-sm-2 col-sm-offset-0 col-xs-offset-6 col-xs-6">
+                    <button type="submit"
+                            ng-click="addStudent($index, form, $event);"
+                            class="btn btn-default btn-block">Add</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

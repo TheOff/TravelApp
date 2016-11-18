@@ -1,0 +1,27 @@
+<div class="form-group"
+     ng-class="{
+        'has-error': form.amenities.$invalid && form.$submitted,
+        'has-success': form.amenities.$valid && form.$submitted
+     }">
+    <label for="amenities">Amenities</label>
+    <select id="amenities"
+            class="form-control"
+            name="amenities"
+            required="required"
+            ng-model="data.amenities"
+            ng-options="option.value as option.title for option in ::options"></select>
+</div>
+
+<div class="form-group"
+     ng-class="{
+        'has-error': form.location.$invalid && form.$submitted,
+        'has-success': form.location.$valid && form.$submitted
+     }">
+    <label for="location">Location</label>
+    <input type="text"
+           id="location"
+           class="form-control"
+           name="location"
+           required="required"
+           ng-model="data.location" />
+</div>

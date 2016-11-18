@@ -1,0 +1,67 @@
+
+<div class="row">
+    <div class="col-md-8">
+        <h1>Domino</h1>
+
+        <ul class="control">
+            <li>
+                <a role="button"
+                   ng-click="domino.rotateLeft()"
+                   class="rotate rotate-left"></a>
+            </li>
+            <li>
+                <a role="button"
+                   class="reset"
+                   ng-click="domino.reset()">New</a>
+            </li>
+            <li>
+                <a role="button"
+                   ng-click="domino.rotateRight()"
+                   class="rotate rotate-right"></a>
+            </li>
+        </ul>
+
+        <div class="control">
+            <label for="domino-width">
+                Size: {{ width }} px
+            </label>
+
+            <input type="range"
+                   id="domino-width"
+                   name="domino-width"
+                   min="50"
+                   max="300"
+                   ng-model="width" />
+        </div>
+
+        <div class="control">
+            <label for="rotation-speed">
+                Rotation Speed: {{ 90 * speed / 200 | number:0 }} deg / sec
+            </label>
+
+            <input type="range"
+                   id="rotation-speed"
+                   name="rotation-speed"
+                   min="100"
+                   max="2000"
+                   ng-model="speed" />
+        </div>
+
+        <div id="domino"
+             speed="{{ speed }}"
+             size="{{ width }}"
+             domino="domino"></div>
+    </div>
+
+    <div class="col-md-4 weight-choices">
+        <ul>
+            <li ng-repeat="item in blancArray track by $index">
+                <a role="button"
+                   class="domino-face"
+                   ng-click="domino.setSide($index + 1)"
+                   weight="{{ $index + 1 }}"></a>
+            </li>
+        </ul>
+    </div>
+</div>
+

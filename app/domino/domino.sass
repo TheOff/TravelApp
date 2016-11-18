@@ -1,0 +1,115 @@
+$color-domino-dot: #a0a0a0
+$displacement: 50%
+
+.domino-face
+  position: relative
+  display: block
+  padding-bottom: 100%
+  color: $color-domino-dot
+  border: 1px solid
+  border-radius: 3px
+
+  i
+    position: absolute
+    display: block
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    width: 0
+    height: 0
+    margin: auto
+    border: 5px solid
+    border-radius: 50%
+
+  &.domino-2, &.domino-3, &.domino-4, &.domino-5, &.domino-6
+    i:first-child
+      top: $displacement
+      right: $displacement
+
+    i:last-child
+      bottom: $displacement
+      left: $displacement
+
+  &.domino-4, &.domino-5, &.domino-6
+    i:nth-child(2)
+      top: $displacement
+      left: $displacement
+
+    i:nth-child(3)
+      bottom: $displacement
+      right: $displacement
+
+  &.domino-6
+    i:nth-child(4)
+      right: $displacement
+
+    i:nth-child(5)
+      left: $displacement
+
+#domino
+  width: 150px
+  margin: 20px auto
+  transition: transform
+
+  & > div:first-child
+    border-radius: 3px 3px 0 0
+    border-bottom-width: 0
+
+  & > div:last-child
+    border-radius: 0 0 3px 3px
+
+.domino-page
+  .control
+    margin: 25px auto
+    font-size: 0
+    text-align: center
+
+    & > *
+      font-size: 16px
+
+    li
+      padding: 0 10px
+      display: inline-block
+      text-align: center
+      box-sizing: border-box
+      vertical-align: top
+
+    a
+      display: inline-block
+      line-height: 30px
+      vertical-align: top
+      user-select: none
+
+  .rotate
+    width: 20px
+    height: 20px
+    margin: 5px
+    background: center / contain no-repeat
+    opacity: .8
+
+    &.rotate-left
+      background-image: url('../../assets/images/arrow-left.png')
+
+    &.rotate-right
+      background-image: url('../../assets/images/arrow-right.png')
+
+    &:hover
+      opacity: 1
+
+  .reset
+    text-transform: uppercase
+
+  .weight-choices
+    padding-top: 85px
+
+    ul
+      display: table
+      margin: 0 auto
+
+    li
+      width: 80px
+      margin-bottom: 5px
+
+    li:last-child
+      margin-bottom: 0

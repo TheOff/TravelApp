@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-9">
+        <h1>Travel</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-3">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"
+                ng-repeat="tab in ::travel.tabs"
+                ng-class="{'active': travel.currentTab === tab}">
+
+                <a ng-href="#{{ ::tab }}"
+                   ng-click="travel.setTab(tab, $event)">
+                    <i class="fa" ng-class="::tab"></i>
+                    <span ng-bind="::tab | capitalize"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-sm-9 tab-content">
+        <div ng-repeat="tab in ::travel.tabs"
+             class="tab-pane fade"
+             ng-class="{ 'in active': tab === travel.currentTab }"
+             on-search="travel.onSearch(tab, $data)"
+             search-form="{{ ::tab }}"></div>
+    </div>
+</div>
+
+<div class="previous-searches" ng-show="travel.history.length">
+    <h3>Previous searches</h3>
+
+    <ul>
+        <li class="row"
+            ng-click="travel.setData(item)"
+            ng-repeat="item in travel.history track by $index">
+        <span class="col-sm-1">
+            <i class="fa" ng-class="item.type"></i>
+        </span>
+            <span class="col-sm-3">
+            {{ item.startDate | date:'MMM dd' }} – {{ item.endDate | date:'MMM dd' }}
+            <span>
+            </span>
+            <span ng-if="item.type === 'hotels'">
+            </span>
+        </span>
+            <span class="col-sm-3" ng-if="item.type === 'flights'">
+            {{ item.from }} > {{ item.to }}
+        </span>
+            <span class="col-sm-3" ng-if="item.type !== 'flights'">
+            {{ item.location }}
+        </span>
+            <span class="col-sm-4">
+            <span ng-if="item.type === 'hotels'"
+                  amenities="{{ item.amenities }}"></span>
+            <span ng-if="item.type === 'cars'"
+                  car-class="{{ item.carClass }}"></span>
+        </span>
+            <span class="col-sm-1">
+            <a role="button"
+               ng-click="travel.removeHistoryItem($index)"
+               class="close">&times;</a>
+        </span>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <title>ITRex Test Task</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/bower_components/angularjs-datepicker/dist/angular-datepicker.min.css">
+    <link rel="stylesheet" href="/app/app.css">
+</head>
+<body ng-app="app">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                <li ng-repeat="state in states"
+                    ng-if="::!state.abstract"
+                    ui-sref-active="active">
+
+                    <a ui-sref="{{ ::state.name }}"
+                       ng-bind="::state.name | capitalize"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" data-ui-view ng-class="stateData.className"></div>
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
+
+    <script src="/app/app.js"></script>
+    <script src="/app/domino/domino.js"></script>
+    <script src="/app/gpa/gpa.js"></script>
+    <script src="/app/travel/travel.js"></script>
+    <script src="/app/plane/plane.js"></script>
+
+    <script src="/components/amenity/amenity.directive.js"></script>
+    <script src="/components/amenity/amenity.service.js"></script>
+    <script src="/components/car-class/carClass.directive.js"></script>
+    <script src="/components/car-class/carClass.service.js"></script>
+    <script src="/components/cars/cars.directive.js"></script>
+    <script src="/components/config/config.factory.js"></script>
+    <script src="/components/flights/flights.directive.js"></script>
+    <script src="/components/hotels/hotels.directive.js"></script>
+    <script src="/components/search-form/serachForm.directive.js"></script>
+    <script src="/components/storage/storage.service.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+.gpa-page
+  .average-gpa
+    margin: 20px 0
+    padding: 10px 0
+    font-size: 16px
+    border-bottom: 1px solid #ddd
+
+    b
+      font-size: 20px
+
+  .nav-tabs
+    width: 100%
+    white-space: nowrap
+
+    li
+      line-height: 40px
+
+    a
+      margin: 0
+
+    button
+      margin: 0 6px
+
+    .remove-btn
+      margin-left: 5px
+      color: #337ab7
+      cursor: pointer
+
+      &:hover
+        color: #23527c
+
+  .grade-name
+    margin: 20px 0
+
+    .form-control
+      width: 200px
+
+  .students
+    .row
+      padding: 8px 0
+
+    .header
+      border-bottom: 1px solid #ddd
+
+      + .footer
+        border-top: none
+
+    .footer
+      border-top: 1px solid #ddd
+
+    .remove-btn:hover
+      text-decoration: none
+
+  @media all and (max-width: 768px)
+    .students .footer > div:not(:first-child)
+      margin-top: 8px

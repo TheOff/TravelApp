@@ -1,0 +1,27 @@
+<div class="form-group"
+     ng-class="{
+        'has-error': form.carClass.$invalid && form.$submitted,
+        'has-success': form.carClass.$valid && form.$submitted
+     }">
+    <label for="car-class">Type</label>
+    <select id="car-class"
+            class="form-control"
+            name="carClass"
+            required="required"
+            ng-model="data.carClass"
+            ng-options="value as title for (value, title) in ::options"></select>
+</div>
+
+<div class="form-group"
+     ng-class="{
+        'has-error': form.location.$invalid && form.$submitted,
+        'has-success': form.location.$valid && form.$submitted
+     }">
+    <label for="location">Location</label>
+    <input type="text"
+           id="location"
+           class="form-control"
+           name="location"
+           required="required"
+           ng-model="data.location" />
+</div>
